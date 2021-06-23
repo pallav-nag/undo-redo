@@ -2,33 +2,46 @@
 int top=-1,n=5,i=-1;
 char stack[5][100];
 
-void write(){
-        top++;
-        i=top;
-        printf("\nEnter text:");
-        scanf(" %s \n",&stack[top]);
+void write()
+{
+    top++;
+    i=top;
+    printf("\nEnter text:");
+    scanf(" %s \n",&stack[top]);
+    for(int k=0;k<i+1;k++)
+    {
+        printf("%s\n\n",stack[k]);
+    }
 }
-void redo(){
-    if(top==i)
+void redo()
+{
+    if(i==0)
         printf("\nRedo not possible\n\n");
     else
-        printf("%s\n\n",stack[++i]);
+    {
+        for(int k=0;k<=i+1;k++)
+        {  
+        printf("%s\n\n",stack[k]);
+        }
+    }
 }
-void undo(){
+void undo()
+{
     if(i==0)
         printf("\nUndo not possible\n\n");
     else
-        printf("%s\n\n",stack[--i]);
-}
-void read(){
-    for(i=-1;i<5;i++){
-        printf("%s \n",stack[i]);
+    {
+        for(int k=0;k<=i-1;k++)
+        {      
+        printf("%s\n\n",stack[k]);
+        }
     }
 }
 int main()
 {
    int x=0;
-   while(x!=5){
+   while(x!=4)
+   {
         printf("Select Operation\n");
         printf("1:WRITE\n2:UNDO\n3:REDO\n4:Exit\n");
         scanf("%d",&x);
@@ -38,10 +51,8 @@ int main()
             undo();
         else if(x==3)
             redo();
-        else if(x==4)
-            read();
     }
-   if (x==5)
-    printf("Exited");
-   return 0;
+        if (x==4)
+            printf("Exited");
+        return 0;
 }
